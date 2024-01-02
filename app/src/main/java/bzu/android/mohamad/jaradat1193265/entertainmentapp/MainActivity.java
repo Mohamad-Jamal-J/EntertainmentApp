@@ -57,6 +57,15 @@ public class MainActivity extends AbstractAppManager {
         }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        doRemember = rememberBox.isChecked();
+        sharedPreferencesEditor.putBoolean(REMEMBER_ACCOUNT,doRemember);
+        sharedPreferencesEditor.apply();
+        clearViews();
+    }
+
     // this method fills the views with the main account data.
     private void initializeLoginViews() {
         if (mainAccount!=null){
