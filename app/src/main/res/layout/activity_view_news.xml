@@ -10,6 +10,13 @@
     android:background="@drawable/linear_gradient"
     android:padding="10dp">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/news"
+        android:background="@drawable/image_bg"
+        />
+
    <androidx.appcompat.widget.LinearLayoutCompat
        android:layout_width="match_parent"
        android:layout_height="wrap_content"

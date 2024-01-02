@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -51,7 +52,6 @@ public class ViewNewsActivity extends AppCompatActivity {
 
         hookLayouts();
         setLayoutsListeners();
-        loadSavedNewsListFromPreferences();
 
         if (newsList.size()==0){
             Intent intent = getIntent();
@@ -68,6 +68,19 @@ public class ViewNewsActivity extends AppCompatActivity {
             setListViewAdapter(newsList,android.R.layout.simple_list_item_1);
 
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        putInSharedReferences(News.SAVED_NEWS_LIST,savedNewsList);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadSavedNewsListFromPreferences();
+    }
+
     public void setupSharedPreferences() {
         sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferences.edit();
@@ -102,8 +115,11 @@ public class ViewNewsActivity extends AppCompatActivity {
         Gson GSON = new Gson();
 
         String JSON_STRING = sharedPreferences.getString(News.SAVED_NEWS_LIST,null);
-        Type objectType = new TypeToken<ArrayList<News>>(){}.getType();
-        savedNewsList = GSON.fromJson(JSON_STRING,objectType);
+        Log.d("TAG15", "Saved News JSON String: " + JSON_STRING);
+
+        Type objectType = new TypeToken<ArrayList<News>>() {}.getType();
+        savedNewsList = GSON.fromJson(JSON_STRING, objectType);
+        Log.d("TAG15", "Parsed Saved News List: " + savedNewsList);
 
         if (savedNewsList==null)
             savedNewsList = new ArrayList<>();
@@ -222,6 +238,7 @@ public class ViewNewsActivity extends AppCompatActivity {
 
         saveButton.setOnClickListener(action->{
             String message;
+            Log.d("TAG15", "showCurrentNews: "+savedNewsList.toString());
             if (!savedNewsList.contains(currentNews)) {
                 savedNewsList.add(currentNews);
                 message = "Saved";
@@ -235,6 +252,13 @@ public class ViewNewsActivity extends AppCompatActivity {
         closeButton.setOnClickListener(action-> newsDialog.dismiss());
 
         newsDialog.show();
+    }
+    boolean checkIfSaved(News news){
+        for (News currNews: savedNewsList){
+            if (currNews.compareTo(news)==0)
+                return true;
+        }
+        return false;
     }
 
     private void showEmptyNews(Context context, String query, String category, String channel) {

@@ -58,4 +58,5 @@
     <string name="category">Category:</string>
     <string name="channel">Channel:</string>
     <string name="go_back">Go Back</string>
+    <string name="clear_selections">Clear Selections</string>
 </resources>

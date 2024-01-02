@@ -2,13 +2,13 @@ package bzu.android.mohamad.jaradat1193265.entertainmentapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -30,6 +30,7 @@ import java.lang.reflect.Type;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class SpecificNewsActivity extends AppCompatActivity {
 
@@ -41,6 +42,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
     ImageButton searchButton;
     Spinner categorySpinner;
     Spinner channelSpinner;
+    Button clearQueryButton;
     public SharedPreferences sharedPreferences;
     public SharedPreferences.Editor sharedPreferencesEditor;
 
@@ -59,13 +61,14 @@ public class SpecificNewsActivity extends AppCompatActivity {
         setAdapter(channelSpinner,News.CHANNELS);
 
 
-//        loadLastQuery();
         searchButton.setOnClickListener(this::onSearchListener);
+        clearQueryButton.setOnClickListener(action->emptyQuery());
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        updateQueryList();
         putInSharedReferences(LATEST_QUERY_ARRAY, queryList);
     }
 
@@ -80,6 +83,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.searchButton);
         categorySpinner= findViewById(R.id.categorySpinner);
         channelSpinner = findViewById(R.id.channelSpinner);
+        clearQueryButton = findViewById(R.id.clearQueryButton);
     }
     public void setupSharedPreferences() {
         sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
@@ -97,23 +101,49 @@ public class SpecificNewsActivity extends AppCompatActivity {
        String JSON_STRING = sharedPreferences.getString(LATEST_QUERY_ARRAY,null);
        Type objectType = new TypeToken<ArrayList<String>>() {}.getType();
        queryList = GSON.fromJson(JSON_STRING,objectType);
+       fillViewsFromQueryList();
+    }
 
+    private void fillViewsFromQueryList(){
         if (queryList !=null) {
             searchBar.setText(queryList.get(0));
-           String channel = queryList.get(2);
-           String category = queryList.get(1);
-           if (channel != null) {
-               int position = ((ArrayAdapter<String>) channelSpinner.getAdapter()).getPosition(channel);
-               channelSpinner.setSelection(position);
-           }
-           if (category!= null) {
-               int position = ((ArrayAdapter<String>) categorySpinner.getAdapter()).getPosition(category);
-               categorySpinner.setSelection(position);
-           }
-       }else
-           queryList = new ArrayList<>();
-
+            String channel = queryList.get(2);
+            String category = queryList.get(1);
+            if (channel != null) {
+                int position = ((ArrayAdapter<String>) channelSpinner.getAdapter()).getPosition(channel);
+                channelSpinner.setSelection(position);
+            }
+            if (category!= null) {
+                int position = ((ArrayAdapter<String>) categorySpinner.getAdapter()).getPosition(category);
+                categorySpinner.setSelection(position);
+            }
+        }else
+          queryList = new ArrayList<>();
     }
+    private void updateQueryList(){
+
+        String query = searchBar.getText().toString();
+        String selectedCategory = categorySpinner.getSelectedItem().toString();
+        String selectedChannel = channelSpinner.getSelectedItem().toString();
+
+        if (queryList !=null) {
+            queryList.clear();
+            queryList.add(query);
+            queryList.add(selectedCategory);
+            queryList.add(selectedChannel);
+        }
+    }
+
+    private void emptyQuery(){
+        if (queryList!=null) {
+           queryList.clear();
+           searchBar.setText("");
+           channelSpinner.setSelection(0);
+           categorySpinner.setSelection(0);
+        }else
+           Toast.makeText(this,"Already Cleared", Toast.LENGTH_SHORT).show();
+    }
+
     private void setAdapter( Spinner spinner, List<String> list){
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -127,8 +157,8 @@ public class SpecificNewsActivity extends AppCompatActivity {
         String selectedChannel = channelSpinner.getSelectedItem().toString();
 
         queryList.clear();
-        queryList.add(query);
-        queryList.add(selectedCategory);
+        queryList.add(query.toLowerCase());
+        queryList.add(selectedCategory.toLowerCase());
         queryList.add(selectedChannel);
 
 
