@@ -20,7 +20,7 @@ public class FunActivity extends AppCompatActivity {
     protected SharedPreferences sharedPreferences;
     protected SharedPreferences.Editor sharedPreferencesEditor;
     private static final String JOKE_API_URL = "https://icanhazdadjoke.com/";
-    private final static String JOKE_KEY = "JOKE_KEY";
+    protected final static String JOKE_KEY = "JOKE_KEY";
     private RequestQueue requestQueue;
 
     @Override

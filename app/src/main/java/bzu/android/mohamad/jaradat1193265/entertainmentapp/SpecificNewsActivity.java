@@ -30,11 +30,10 @@ import java.lang.reflect.Type;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class SpecificNewsActivity extends AppCompatActivity {
 
-    protected final static String LATEST_QUERY_ARRAY = "LATEST_QUERY_ARRAY";
+    protected final static String LATEST_QUERY_ARRAY_KEY = "LATEST_QUERY_ARRAY";
     protected static List<News> newsList;
     protected static List<String> queryList;
     RequestQueue requestQueue;
@@ -69,7 +68,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         updateQueryList();
-        putInSharedReferences(LATEST_QUERY_ARRAY, queryList);
+        putInSharedReferences(LATEST_QUERY_ARRAY_KEY, queryList);
     }
 
     @Override
@@ -98,7 +97,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
     }
     private void loadLastQuery(){
        Gson GSON = new Gson();
-       String JSON_STRING = sharedPreferences.getString(LATEST_QUERY_ARRAY,null);
+       String JSON_STRING = sharedPreferences.getString(LATEST_QUERY_ARRAY_KEY,null);
        Type objectType = new TypeToken<ArrayList<String>>() {}.getType();
        queryList = GSON.fromJson(JSON_STRING,objectType);
        fillViewsFromQueryList();
@@ -235,7 +234,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewNewsActivity.class);
         intent.putExtra(News.NEWS_LIST_KEY, JSON_STRING);
         JSON_STRING = GSON.toJson(queryList);
-        intent.putExtra(LATEST_QUERY_ARRAY,JSON_STRING);
+        intent.putExtra(LATEST_QUERY_ARRAY_KEY,JSON_STRING);
         startActivity(intent);
     }
 }

@@ -2,6 +2,7 @@ package bzu.android.mohamad.jaradat1193265.entertainmentapp;
 
 import androidx.annotation.NonNull;
 
+
 public class Account implements Comparable<Account>{
     String name;
     String email ;

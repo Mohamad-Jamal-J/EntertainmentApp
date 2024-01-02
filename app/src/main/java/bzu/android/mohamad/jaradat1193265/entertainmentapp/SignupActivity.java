@@ -17,7 +17,7 @@ import java.util.List;
 
 
 public class SignupActivity extends AbstractAppManager{
-    final static String SIGN_SAVED_INFO = "SIGN_SAVED_INFO";
+    protected final static String SIGN_SAVED_INFO = "SIGN_SAVED_INFO";
     AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +150,10 @@ public class SignupActivity extends AbstractAppManager{
     }
 
     protected void signAndCallLogin(String name, String email, String password) {
+        //delete all previous data of the user
+        sharedPreferencesEditor.clear();
+        sharedPreferencesEditor.commit();
+
         mainAccount = new Account(name.trim(), email.trim(), password.trim());
         clearViews();
         makeToast(this, FEEDBACK_OK_1);

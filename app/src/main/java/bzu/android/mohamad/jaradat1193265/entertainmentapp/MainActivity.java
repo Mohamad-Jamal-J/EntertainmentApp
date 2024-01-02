@@ -83,9 +83,9 @@ public class MainActivity extends AbstractAppManager {
         if (email.equalsIgnoreCase(mainAccount.email))
             if (password.equals(mainAccount.password))
             {
-                Toast.makeText(this, FEEDBACK_OK_2, Toast.LENGTH_LONG).show();
+                makeToast(this, FEEDBACK_OK_2);
                 doRemember = rememberBox.isChecked();
-                sharedPreferencesEditor.putBoolean(REMEMBER_ACCOUNT,doRemember);
+                sharedPreferencesEditor.putBoolean(REMEMBER_ACCOUNT, doRemember);
                 sharedPreferencesEditor.apply();
                 putInSharedReferences(MAIN_ACCOUNT_KEY,mainAccount);
                 Intent intent = new Intent(this, APIChoiceActivity.class);

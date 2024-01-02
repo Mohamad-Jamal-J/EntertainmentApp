@@ -13,7 +13,7 @@ public class News implements Comparable<News>{
             "SCIENCE", "SPORTS", "TECHNOLOGY", "TOP", "TOURISM", "WORLD");
     protected final static List<String> CHANNELS = Arrays.asList("ANY","BBC","NYTIMES","ALJAZEERA", "CNN","RT","FOXNEWS");
     protected final static String NEWS_LIST_KEY = "NEWS_LIST_KEY";
-    protected final static String SAVED_NEWS_LIST = "SAVED_NEWS_LIST";
+    protected final static String SAVED_NEWS_LIST_KEY = "SAVED_NEWS_LIST";
 
     String title;
     String content;

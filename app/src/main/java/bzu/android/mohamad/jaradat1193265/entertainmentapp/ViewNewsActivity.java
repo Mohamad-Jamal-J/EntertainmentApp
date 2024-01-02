@@ -56,7 +56,7 @@ public class ViewNewsActivity extends AppCompatActivity {
         if (newsList.size()==0){
             Intent intent = getIntent();
             Gson GSON = new Gson();
-            String JSON_STRING = intent.getStringExtra(SpecificNewsActivity.LATEST_QUERY_ARRAY);
+            String JSON_STRING = intent.getStringExtra(SpecificNewsActivity.LATEST_QUERY_ARRAY_KEY);
             Type objectType = new TypeToken<ArrayList<String>>() {}.getType();
             queryList = GSON.fromJson(JSON_STRING,objectType);
 
@@ -72,7 +72,7 @@ public class ViewNewsActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        putInSharedReferences(News.SAVED_NEWS_LIST,savedNewsList);
+        putInSharedReferences(News.SAVED_NEWS_LIST_KEY,savedNewsList);
     }
 
     @Override
@@ -114,7 +114,7 @@ public class ViewNewsActivity extends AppCompatActivity {
     private void loadSavedNewsListFromPreferences(){
         Gson GSON = new Gson();
 
-        String JSON_STRING = sharedPreferences.getString(News.SAVED_NEWS_LIST,null);
+        String JSON_STRING = sharedPreferences.getString(News.SAVED_NEWS_LIST_KEY,null);
         Log.d("TAG15", "Saved News JSON String: " + JSON_STRING);
 
         Type objectType = new TypeToken<ArrayList<News>>() {}.getType();
@@ -181,7 +181,7 @@ public class ViewNewsActivity extends AppCompatActivity {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
         newsListView.clearChoices();
         newsListAdapter.notifyDataSetChanged();
-        putInSharedReferences(News.SAVED_NEWS_LIST, savedNewsList);
+        putInSharedReferences(News.SAVED_NEWS_LIST_KEY, savedNewsList);
     }
 
     // this method will toggle the edit mode on/off and as a result
@@ -245,7 +245,7 @@ public class ViewNewsActivity extends AppCompatActivity {
             }else
                 message = "Already saved";
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-            putInSharedReferences(News.SAVED_NEWS_LIST,savedNewsList);
+            putInSharedReferences(News.SAVED_NEWS_LIST_KEY,savedNewsList);
             newsDialog.dismiss();
         });
 
@@ -253,14 +253,6 @@ public class ViewNewsActivity extends AppCompatActivity {
 
         newsDialog.show();
     }
-    boolean checkIfSaved(News news){
-        for (News currNews: savedNewsList){
-            if (currNews.compareTo(news)==0)
-                return true;
-        }
-        return false;
-    }
-
     private void showEmptyNews(Context context, String query, String category, String channel) {
         View view = LayoutInflater.from(context).inflate(R.layout.alert_dialog_empty_custom, null);
 

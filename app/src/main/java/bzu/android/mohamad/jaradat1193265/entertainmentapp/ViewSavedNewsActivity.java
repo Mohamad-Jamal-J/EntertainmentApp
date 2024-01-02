@@ -70,7 +70,7 @@ public class ViewSavedNewsActivity extends AppCompatActivity {
     private void loadSavedNewsListFromPreferences(){
         Gson GSON = new Gson();
 
-        String JSON_STRING = sharedPreferences.getString(News.SAVED_NEWS_LIST,null);
+        String JSON_STRING = sharedPreferences.getString(News.SAVED_NEWS_LIST_KEY,null);
         Type objectType = new TypeToken<ArrayList<News>>(){}.getType();
         savedNewsList = GSON.fromJson(JSON_STRING,objectType);
 
@@ -189,7 +189,7 @@ public class ViewSavedNewsActivity extends AppCompatActivity {
             if (savedNewsList.contains(currentNews)) {
                 savedNewsList.remove(currentNews);
                 newsListAdapter.notifyDataSetChanged();
-                putInSharedReferences(News.SAVED_NEWS_LIST,savedNewsList);
+                putInSharedReferences(News.SAVED_NEWS_LIST_KEY,savedNewsList);
                 message = "Deleted";
             }else
                 message = "Already removed";
@@ -219,7 +219,7 @@ public class ViewSavedNewsActivity extends AppCompatActivity {
 
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
         newsListView.clearChoices();
-        putInSharedReferences(News.SAVED_NEWS_LIST, savedNewsList);
+        putInSharedReferences(News.SAVED_NEWS_LIST_KEY, savedNewsList);
     }
     private void showWarningDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -232,7 +232,7 @@ public class ViewSavedNewsActivity extends AppCompatActivity {
                 (positiveDialog, id)->{
                     savedNewsList.clear();
                     newsListAdapter.notifyDataSetChanged();
-                    putInSharedReferences(News.SAVED_NEWS_LIST,savedNewsList);
+                    putInSharedReferences(News.SAVED_NEWS_LIST_KEY,savedNewsList);
                     positiveDialog.dismiss();
                 });
 
