@@ -14,6 +14,8 @@ public class APIChoiceActivity extends AppCompatActivity {
     CardView entertainmentCardView;
     CardView savedNewsCardView;
     Button logoutButton;
+    //this activity is for choosing the api wanted to use, it has no significant or important data
+    // so i'm not applying life cycle methods here
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

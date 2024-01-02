@@ -35,7 +35,7 @@ public class FunActivity extends AppCompatActivity {
 
         button.setOnClickListener(action->generateJoke());
     }
-
+    //save the last joke the user saw in order to fetch it again when they're back
     @Override
     protected void onStop() {
         super.onStop();
@@ -43,6 +43,7 @@ public class FunActivity extends AppCompatActivity {
         sharedPreferencesEditor.apply();
     }
 
+    // load the saved joke in the onstop call back method
     @Override
     protected void onResume() {
         super.onResume();
@@ -52,10 +53,13 @@ public class FunActivity extends AppCompatActivity {
         else
             textView.setText(R.string.wanna_hear_a_joke);
     }
+    //this method sets up the shared preferences and makes them ready to use
     protected void setupSharedPreferences() {
         sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferences.edit();
     }
+    //this method uses volley api to retrieve a joke from icanhazdadjoke api
+    // after the retrieval, the joke is then displayed to the user
     private void generateJoke() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, JOKE_API_URL, null,

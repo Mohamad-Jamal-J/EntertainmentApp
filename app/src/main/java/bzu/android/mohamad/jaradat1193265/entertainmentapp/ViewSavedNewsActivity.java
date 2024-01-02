@@ -145,6 +145,8 @@ public class ViewSavedNewsActivity extends AppCompatActivity {
             selectedNewsList.clear();
         }
     }
+    // this method will change the background of the editing switch to give the user a better ux
+    // about which mode they are using now
     private void changeEditIcon(){
         Drawable drawable;
         if (editModeOn)
@@ -153,6 +155,8 @@ public class ViewSavedNewsActivity extends AppCompatActivity {
             drawable = ContextCompat.getDrawable(this, R.drawable.image_bg);
         editButton.setBackground(drawable);
     }
+    // this method shows a custom alert dialog to explore the full content of the selected saved item news
+    // the users will also have the option to save the news they are reading
     private void showCurrentNews(Context context, News currentNews) {
         if (currentNews==null){
             Toast.makeText(this, "Empty Item", Toast.LENGTH_SHORT).show();
@@ -201,12 +205,15 @@ public class ViewSavedNewsActivity extends AppCompatActivity {
 
         alertDialog.show();
     }
+    // this method decides and assigns which method should be assigned to the listener of the button
+    // based on the current mode (editing on/off)
     private void deleteNewsOnClickListener(View action) {
         if (editModeOn)
             deleteSelectedNews(selectedNewsList);
         else
             showWarningDialog();
     }
+    // this method deletes the selected news in the saved list
     private void deleteSelectedNews(List<News> list) {
         int numOfDeletedNews=0;
         for (News currentNews: list)
@@ -221,6 +228,8 @@ public class ViewSavedNewsActivity extends AppCompatActivity {
         newsListView.clearChoices();
         putInSharedReferences(News.SAVED_NEWS_LIST_KEY, savedNewsList);
     }
+    // this method shows a dialog to warn the user about the danger of deleting all the saved data
+    // it's a last resort to cancel on the operation, in case the user clicked by mistake on it
     private void showWarningDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 

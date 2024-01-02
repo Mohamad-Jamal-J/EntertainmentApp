@@ -5,6 +5,14 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+
+//this activity lets the user to decide on which way they prefer to use the api
+// the fast and easy way? they get directed to the Latestnews activity where they can se news form channels
+// during the 48 hours, without the need to specify a query
+
+// or to the specific activity where they can enter the query they are looking for
+
+// therefore no life cycle methods were needed
 public class NewsChoiceActivity extends AppCompatActivity {
     CardView searchCardView;
     CardView latestCardView;

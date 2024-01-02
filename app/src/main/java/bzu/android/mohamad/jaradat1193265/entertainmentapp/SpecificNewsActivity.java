@@ -64,19 +64,22 @@ public class SpecificNewsActivity extends AppCompatActivity {
         clearQueryButton.setOnClickListener(action->emptyQuery());
     }
 
+    // this was implemented to make sure the query is saved in case the app crashed or the user by mistake left the page
+     // in any case or error.
     @Override
     protected void onStop() {
         super.onStop();
         updateQueryList();
         putInSharedReferences(LATEST_QUERY_ARRAY_KEY, queryList);
     }
-
+// retrieving the saved query from when the user left, so they can continue form there
     @Override
     protected void onResume() {
         super.onResume();
         loadLastQuery();
     }
 
+    // this method links the views in the xml file with the backened variables
     private void hookLayouts(){
         searchBar = findViewById(R.id.searchBar);
         searchButton = findViewById(R.id.searchButton);
@@ -84,10 +87,12 @@ public class SpecificNewsActivity extends AppCompatActivity {
         channelSpinner = findViewById(R.id.channelSpinner);
         clearQueryButton = findViewById(R.id.clearQueryButton);
     }
+    // this methods sets up the shared preferences and make them ready to use
     public void setupSharedPreferences() {
         sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferences.edit();
     }
+    // this method is used to convert a given list to json format and save it in the preferences
     public void putInSharedReferences(String KEY,List<String> list){
         Gson GSON = new Gson();
 
@@ -95,6 +100,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
         sharedPreferencesEditor.putString(KEY, JSON_STRING);
         sharedPreferencesEditor.apply();
     }
+    // this method is used in the onresume to load the last query
     private void loadLastQuery(){
        Gson GSON = new Gson();
        String JSON_STRING = sharedPreferences.getString(LATEST_QUERY_ARRAY_KEY,null);
@@ -102,7 +108,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
        queryList = GSON.fromJson(JSON_STRING,objectType);
        fillViewsFromQueryList();
     }
-
+// this method fills the views with the given last query, alos used in the onresume with load query
     private void fillViewsFromQueryList(){
         if (queryList !=null) {
             searchBar.setText(queryList.get(0));
@@ -119,6 +125,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
         }else
           queryList = new ArrayList<>();
     }
+    // this method is used in the onstop to assist it to accomplish the life cycle needed
     private void updateQueryList(){
 
         String query = searchBar.getText().toString();
@@ -133,6 +140,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
         }
     }
 
+    // this method set the entries in the vies to their default (empties them)
     private void emptyQuery(){
         if (queryList!=null) {
            queryList.clear();
@@ -143,12 +151,16 @@ public class SpecificNewsActivity extends AppCompatActivity {
            Toast.makeText(this,"Already Cleared", Toast.LENGTH_SHORT).show();
     }
 
+    // this method sets the adapter for a given spinner, it assign the list given to fill the choices in the spinner
+
     private void setAdapter( Spinner spinner, List<String> list){
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
 
+    // this method starts when the search button is clicked, it does the necessary modifications
+    // on the entries by the user and then creates the correct URL and calls the api
     private void onSearchListener(View view){
 
         String query = searchBar.getText().toString();
@@ -186,6 +198,11 @@ public class SpecificNewsActivity extends AppCompatActivity {
             Toast.makeText(this,"Query Can't be Encoded",Toast.LENGTH_LONG).show();
         }
     }
+    // this is the method responsible for calling the volley and fetch the fata from the api
+    // i'm limited to 10 results per page, and about 200 api calls in a day and 20 api calls per 15 minutes
+    // the result coming back is 10 news of the query given in titles of news
+    // based on the category and/ or channel selected
+
     private void getNews(String url) {
         if (url==null)
             return;
@@ -227,6 +244,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
             Log.d("Volley", "Exception: "+error);
         }
     }
+    // this method starts the view news activity to show the result retrieved from the api
     private void viewNews(){
         Gson GSON = new Gson();
         String JSON_STRING = GSON.toJson(newsList);

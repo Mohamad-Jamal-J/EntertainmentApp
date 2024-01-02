@@ -36,7 +36,8 @@ public class LatestNewsActivity extends AppCompatActivity {
     CardView foxnewsCardView;
 
     // In this activity i believe the lifecycle methods aren't really necessary
-    // so i believe onCreate is enough.
+    // so onCreate is enough since the user is already in hurry and the have the
+    // option to save the news they wanna see again.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class LatestNewsActivity extends AppCompatActivity {
         initializeMap();
         setActionsForViews();
     }
+    //this method links the views in the xml file with the backend variables
     private void hookLayouts(){
         bbcCardView = findViewById(R.id.bbcCardView);
         nyTimesCardView = findViewById(R.id.nyTimesCardView);
@@ -58,6 +60,9 @@ public class LatestNewsActivity extends AppCompatActivity {
         russiaTodayCardView = findViewById(R.id.russiaTodayCardView);
         foxnewsCardView = findViewById(R.id.foxnewsCardView);
     }
+    //this method creates a map for me to decide on which cardview calls which channel name
+    // the api i'm using isn't offering the list of the channels they are using so i had to manually
+    //retrieve them, i've put 6 different channels in this assignment so we get the idea.
     private void initializeMap(){
         channelsMap.put(bbcCardView,1);
         channelsMap.put(nyTimesCardView,2);
@@ -66,6 +71,7 @@ public class LatestNewsActivity extends AppCompatActivity {
         channelsMap.put(russiaTodayCardView,5);
         channelsMap.put(foxnewsCardView,6);
     }
+    // this method assigns the on click listeners for the all card views in my xml file
     private void setActionsForViews(){
         bbcCardView.setOnClickListener(this::onActionListener);
         nyTimesCardView.setOnClickListener(this::onActionListener);
@@ -74,6 +80,8 @@ public class LatestNewsActivity extends AppCompatActivity {
         russiaTodayCardView.setOnClickListener(this::onActionListener);
         foxnewsCardView.setOnClickListener(this::onActionListener);
     }
+    //this method sets the on click listener to a given cardview and then calls the api to get
+    //data based on this cardview
     private void onActionListener(View cardView){
         if (cardView != null && channelsMap.containsKey(cardView)) {
             int index = channelsMap.get(cardView);
@@ -81,6 +89,9 @@ public class LatestNewsActivity extends AppCompatActivity {
             getNews(channel);
         }
     }
+    // this is the method responsible for calling the volley and fetch the fata from the api
+    // i'm limited to 10 results per page, and about 200 api calls in a day and 20 api calls per 15 minutes
+    // the result coming back is 10 news of the selected channel in the past 48 hours
     private void getNews(String channel) {
         if (channel==null)
             return;
@@ -126,6 +137,7 @@ public class LatestNewsActivity extends AppCompatActivity {
             Log.d("Volley", "Exception: "+error);
         }
     }
+    // this method starts the view news activity to show the result retrieved from the api
     private void viewNews(){
         Gson GSON = new Gson();
         String JSON_STRING = GSON.toJson(newsList);

@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class News implements Comparable<News>{
+    // the below lists are the options supported by the api i'm using, you can find them on the website
+    // but there isn't a way to fetch them from there so i manually entered them
     protected final static List<String> CATEGORIES = Arrays.asList("ANY", "BUSINESS", "CRIME", "DOMESTIC", "EDUCATION",
             "ENTERTAINMENT", "ENVIRONMENT", "FOOD", "HEALTH", "OTHER" ,"POLITICS",
             "SCIENCE", "SPORTS", "TECHNOLOGY", "TOP", "TOURISM", "WORLD");

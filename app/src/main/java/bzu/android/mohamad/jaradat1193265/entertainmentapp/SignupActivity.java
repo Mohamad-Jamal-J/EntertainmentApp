@@ -15,7 +15,9 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// note since we are working with shared preferences, only one account is needed to be stored
+// therefore if there was an already existing account and the user wanted to make another one, the new one
+// will replace the old one (of course only if the data and information entered were valid)
 public class SignupActivity extends AbstractAppManager{
     protected final static String SIGN_SAVED_INFO = "SIGN_SAVED_INFO";
     AlertDialog alertDialog;
@@ -46,6 +48,8 @@ public class SignupActivity extends AbstractAppManager{
 
     }
 
+    //implemented to save the current entries by the user, in case they closed the app or crashed
+    // and anything happened to the data, so they don't have to re enter everything they have provided
 
         @Override
     protected void onStop() {
@@ -82,16 +86,19 @@ public class SignupActivity extends AbstractAppManager{
         }
     }
 
-
+// this methods links the views in the xml file with the backed variables
     @Override
     protected void hookLayouts() {
         super.hookLayouts();
         nameEditText = findViewById(R.id.userName);
     }
+    // this method overrides the clearviews method in the abstract app manager class in
+    //order to clear one more view
     protected void clearViews() {
         super.clearViews();
         nameEditText.setText("");
     }
+    //
     private boolean isValidEntries(String name, String email, String password){
         if (name == null || name.trim().isEmpty()){
             makeToast(this, FEEDBACK_ERR_4);
@@ -113,15 +120,19 @@ public class SignupActivity extends AbstractAppManager{
         hintColor(passwordEditText,true);
         return true;
     }
+    //this method checks if the password given is less than 8 characters long
     private boolean isValidPasswordEntry(String password){
         return password != null && password.trim().length() >= 8;
     }
+    // this method changes the hint color for edit texts where an error ocurred
     private void hintColor(EditText view, boolean isOk){
         if (isOk)
             view.setHintTextColor(Color.GRAY);
         else
             view.setHintTextColor(Color.parseColor("#FFAACC15"));
     }
+    //this method uses volley to check if the email provided was valid or not.
+    // meaning that the emails have to be real and not dummy emails.
     protected void validateEmailWithApi(String name, String email, String password){
         String API_KEY = "bcf4d62f20ea4ef6902c0203ae831022";
         String url = "https://emailvalidation.abstractapi.com/v1/?api_key="+API_KEY+"&email="+email;
@@ -149,6 +160,7 @@ public class SignupActivity extends AbstractAppManager{
         queue.add(request);
     }
 
+    // this method deletes all the data from the previous account and overwrite the account with a new one
     protected void signAndCallLogin(String name, String email, String password) {
         //delete all previous data of the user
         sharedPreferencesEditor.clear();
@@ -165,11 +177,15 @@ public class SignupActivity extends AbstractAppManager{
         finish(); // destroy and remove this activity from background once the process is successful
     }
 
+    // this method is used to fill the views in the onresume cycle, in case there were any unfinished
+    //sign up process before
     private void initializeSignViews(String name, String email, String password) {
         nameEditText.setText(name);
         emailEditText.setText(email);
         passwordEditText.setText(password);
     }
+    //this method shows an alert dialog to warn the user about the danger of leaving the page
+    // it lets them to decides whether they want to continue and lose their entered data or cancel
     private void showWarningDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 

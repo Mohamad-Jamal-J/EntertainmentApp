@@ -68,23 +68,25 @@ public class ViewNewsActivity extends AppCompatActivity {
             setListViewAdapter(newsList,android.R.layout.simple_list_item_1);
 
     }
-
+// saving the saved news list in case a carsh or the user left the app and the data was lost
     @Override
     protected void onStop() {
         super.onStop();
         putInSharedReferences(News.SAVED_NEWS_LIST_KEY,savedNewsList);
     }
 
+    // retrieve the save news list from the refrences in order to offer a good life cycle
     @Override
     protected void onResume() {
         super.onResume();
         loadSavedNewsListFromPreferences();
     }
-
+// this methids sets up the shared preferences and make them ready to sue
     public void setupSharedPreferences() {
         sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferences.edit();
     }
+    // this method put the given list to the shared preferences
     public void putInSharedReferences(String KEY,List<News> list){
         Gson GSON = new Gson();
 
@@ -92,12 +94,13 @@ public class ViewNewsActivity extends AppCompatActivity {
         sharedPreferencesEditor.putString(KEY, JSON_STRING);
         sharedPreferencesEditor.apply();
     }
-
+// this methods links the views in the xml file with the variables in the backend
     private void hookLayouts() {
         newsListView = findViewById(R.id.newsList);
         editButton  = findViewById(R.id.editButton);
         saveNewsListButton =findViewById(R.id.saveNewsList);
     }
+    // this method will load the news result coming from either activity intent of the ones responsible to call it
     private void loadNewsListFromIntent(){
         Intent intent = getIntent();
 
@@ -111,16 +114,13 @@ public class ViewNewsActivity extends AppCompatActivity {
         if (newsList==null)
             newsList = new ArrayList<>();
     }
+    // this method will load the saved news list from shared preferences
     private void loadSavedNewsListFromPreferences(){
         Gson GSON = new Gson();
 
         String JSON_STRING = sharedPreferences.getString(News.SAVED_NEWS_LIST_KEY,null);
-        Log.d("TAG15", "Saved News JSON String: " + JSON_STRING);
-
         Type objectType = new TypeToken<ArrayList<News>>() {}.getType();
         savedNewsList = GSON.fromJson(JSON_STRING, objectType);
-        Log.d("TAG15", "Parsed Saved News List: " + savedNewsList);
-
         if (savedNewsList==null)
             savedNewsList = new ArrayList<>();
     }
@@ -183,9 +183,9 @@ public class ViewNewsActivity extends AppCompatActivity {
         newsListAdapter.notifyDataSetChanged();
         putInSharedReferences(News.SAVED_NEWS_LIST_KEY, savedNewsList);
     }
-
-    // this method will toggle the edit mode on/off and as a result
-    // it changes the listview layout mode to multiple or simple.
+//
+//this method will toggle the edit mode on/off and as a result
+//    // it changes the listview layout mode to multiple or simple.
     private void editModeClickListener(View view) {
         editModeOn=!editModeOn;
         changeEditIcon();
@@ -199,6 +199,8 @@ public class ViewNewsActivity extends AppCompatActivity {
             selectedNewsList.clear();
         }
     }
+    // this method will change the background of the editing switch to give the user a better ux
+    // about which mode they are using now
     private void changeEditIcon(){
         Drawable drawable;
         if (editModeOn)
@@ -207,6 +209,8 @@ public class ViewNewsActivity extends AppCompatActivity {
             drawable = ContextCompat.getDrawable(this, R.drawable.image_bg);
         editButton.setBackground(drawable);
     }
+    // this method shows a custom alert dialog to explore the full content of the selected item news
+    // the users will also have the option to save the news they are reading
     private void showCurrentNews(Context context, News currentNews) {
         if (currentNews==null){
             Toast.makeText(this, "Empty Item", Toast.LENGTH_SHORT).show();
@@ -253,6 +257,8 @@ public class ViewNewsActivity extends AppCompatActivity {
 
         newsDialog.show();
     }
+    // if there was no data retrieved from the given query , an alert dialog showing the query
+    // will pop up and tell the users that nothing was found
     private void showEmptyNews(Context context, String query, String category, String channel) {
         View view = LayoutInflater.from(context).inflate(R.layout.alert_dialog_empty_custom, null);
 

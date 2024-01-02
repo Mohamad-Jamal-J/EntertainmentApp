@@ -4,8 +4,6 @@ package bzu.android.mohamad.jaradat1193265.entertainmentapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CheckBox;
-import android.widget.Toast;
-
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
@@ -39,7 +37,11 @@ public class MainActivity extends AbstractAppManager {
             startActivity(intent);
         });
     }
-
+    //retrieving the main account in order to validate the login entries offered by the user
+    // if the remember me option was selected before launching the app it will fill the views with
+    // main account's data so the user can login after it,
+    // please note that i commented out the loginButton.callOnClick since as i understood from
+    //the assignment description is that you want to see the credentials instead of immediately logging in
     @Override
     protected void onResume() {
         super.onResume();
@@ -49,10 +51,13 @@ public class MainActivity extends AbstractAppManager {
         mainAccount = GSON.fromJson(JSON_STRING , Account.class);
 
         doRemember = sharedPreferences.getBoolean(REMEMBER_ACCOUNT,false);
-        if (doRemember)
+        if (doRemember) {
             initializeLoginViews();
+//            loginButton.callOnClick();
+        }
     }
 
+    // this method fills the views with the main account data.
     private void initializeLoginViews() {
         if (mainAccount!=null){
             emailEditText.setText(mainAccount.getEmail());
@@ -60,11 +65,15 @@ public class MainActivity extends AbstractAppManager {
             rememberBox.setChecked(true);
         }
     }
+    // this method links the views in the xml file with the variables in the backend
     @Override
     protected void hookLayouts() {
         super.hookLayouts();
         rememberBox = findViewById(R.id.rememberCheckbox);
     }
+   // this method checks if the views were empty before checking their validity
+    // also if there was no account existing in the preferences (first time launching the account)
+    // the user will be asked to create an account
     private boolean checkInputs(String email, String password){
         if (email.isEmpty()) {
             makeToast(this, "Fill email");
@@ -79,6 +88,9 @@ public class MainActivity extends AbstractAppManager {
         }
         return true;
     }
+    // this method checks the given entries from the user to see if they match the
+    // data ceredentials for the main account.
+    // if all entries are valid the user will be able to log to their account and use the apis
     private void checkCredentials(String email, String password){
         if (email.equalsIgnoreCase(mainAccount.email))
             if (password.equals(mainAccount.password))
