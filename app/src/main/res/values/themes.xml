@@ -47,6 +47,7 @@
         <item name="android:layout_margin">5dp</item>
         <item name="cardBackgroundColor">#80FFFFFF</item>
         <item name="cardElevation">0dp</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
 
     <style name="CardTextViewStyle">

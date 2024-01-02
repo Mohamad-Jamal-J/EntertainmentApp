@@ -50,8 +50,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_columnWeight="1"
-            android:src="@drawable/search"
-            android:backgroundTint="#00FFFFFF"
+            android:src="@drawable/search_icon"
+            android:background="@drawable/feedback"
             android:contentDescription="@string/button_with_search_image" />
 
 

@@ -106,7 +106,7 @@ public class LatestNewsActivity extends AppCompatActivity {
                                 String source = newsObject.getString("source_id");
                                 News news = new News(title,content,publishDate, source);
                                 newsList.add(news);
-                                Log.d("Volley", "Response "+i+": " + title + " content " + content + " date" + publishDate+ " channel" + source);
+                                Log.d("Volley", "Response "+i+": " + title + " content " + content + " date " + publishDate+ " channel " + source);
                             }
                             viewNews();
                         }else{

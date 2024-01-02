@@ -200,7 +200,7 @@ public class ViewNewsActivity extends AppCompatActivity {
         String title = currentNews.getTitle();
         String publishDate = currentNews.getPublishDate();
         String content = currentNews.getContent();
-
+        String channel = currentNews.getChannel();
 
         View view = LayoutInflater.from(context).inflate(R.layout.alert_dialog_custom, null);
 
@@ -214,9 +214,9 @@ public class ViewNewsActivity extends AppCompatActivity {
         Button closeButton = view.findViewById(R.id.closeButton);
         Button saveButton = view.findViewById(R.id.saveButton);
 
-
+        String channelAndDate = ((channel!=null)?  channel:"Unknown Source")+", "+ ((publishDate!=null)? publishDate:"No Date Provided");
         newsTitleTextView.setText( (title!=null)? title:"Empty Title");
-        publishDateTextview.setText((publishDate!=null)? publishDate:"No Date Provided");
+        publishDateTextview.setText(channelAndDate);
         newsContentTextView.setText((content!=null)? content:"No Description Provided");
 
 

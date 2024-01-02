@@ -2,6 +2,7 @@ package bzu.android.mohamad.jaradat1193265.entertainmentapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -58,23 +59,13 @@ public class SpecificNewsActivity extends AppCompatActivity {
         setAdapter(channelSpinner,News.CHANNELS);
 
 
-        loadLastQuery();
-
+//        loadLastQuery();
         searchButton.setOnClickListener(this::onSearchListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        String query = searchBar.getText().toString();
-        String selectedCategory = categorySpinner.getSelectedItem().toString();
-        String selectedChannel = channelSpinner.getSelectedItem().toString();
-
-//        queryList.clear();
-        queryList = new ArrayList<>();
-        queryList.add(query);
-        queryList.add(selectedCategory);
-        queryList.add(selectedChannel);
         putInSharedReferences(LATEST_QUERY_ARRAY, queryList);
     }
 
@@ -94,7 +85,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferences.edit();
     }
-    public void putInSharedReferences(String KEY,List<?> list){
+    public void putInSharedReferences(String KEY,List<String> list){
         Gson GSON = new Gson();
 
         String JSON_STRING = GSON.toJson(list);
@@ -106,10 +97,11 @@ public class SpecificNewsActivity extends AppCompatActivity {
        String JSON_STRING = sharedPreferences.getString(LATEST_QUERY_ARRAY,null);
        Type objectType = new TypeToken<ArrayList<String>>() {}.getType();
        queryList = GSON.fromJson(JSON_STRING,objectType);
-       if (queryList !=null) {
-           searchBar.setText(queryList.get(0));
-           String channel = queryList.get(1);
-           String category = queryList.get(2);
+
+        if (queryList !=null) {
+            searchBar.setText(queryList.get(0));
+           String channel = queryList.get(2);
+           String category = queryList.get(1);
            if (channel != null) {
                int position = ((ArrayAdapter<String>) channelSpinner.getAdapter()).getPosition(channel);
                channelSpinner.setSelection(position);
@@ -120,6 +112,7 @@ public class SpecificNewsActivity extends AppCompatActivity {
            }
        }else
            queryList = new ArrayList<>();
+
     }
     private void setAdapter( Spinner spinner, List<String> list){
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
@@ -142,16 +135,11 @@ public class SpecificNewsActivity extends AppCompatActivity {
         if(query.trim().isEmpty()
                 && selectedCategory.equalsIgnoreCase("any")
                 && selectedChannel.equalsIgnoreCase("any")){
-
-            Toast.makeText(this,"this is a generic api call ",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"At least one information is needed",Toast.LENGTH_LONG).show();
             return;
-
-            //The following search doesn't have a specified query,
-            // are you sure you want to fetch these news?
-            // do this with action bar
         }
         if (query.length()>=500) {//query too long (500>)
-            Toast.makeText(this,"Query is Too Long",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Query is Too Long",Toast.LENGTH_SHORT).show();
             return;
         }
 
