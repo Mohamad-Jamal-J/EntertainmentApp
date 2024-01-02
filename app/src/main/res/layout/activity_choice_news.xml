@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <GridLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        tools:context=".NewsChoiceActivity"
+        android:background="@drawable/linear_gradient"
+        android:columnCount="2"
+        android:rowCount="5"
+        android:padding="50dp">
+
+        <TextView
+            android:id="@+id/pageLabel"
+            android:text="@string/are_you"
+            android:textStyle="bold|italic"
+            style="@style/pageLabel"
+            android:layout_marginTop="20dp"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center"
+            />
+
+        <androidx.cardview.widget.CardView
+           android:id="@+id/searchForNewsCardView"
+           style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+               style="@style/LinearLayoutCardStyle">
+                <ImageView
+                    android:id="@+id/searchForNews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/specefic"
+                    android:contentDescription="@string/news_logo"/>
+
+                <TextView
+                    android:text="@string/looking_for_specific_news"
+                    android:labelFor="@id/searchForNews"
+                    style="@style/CardTextViewStyle"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_rowSpan="1"
+            android:layout_columnSpan="2"
+            android:text="@string/or"
+            style="@style/pageLabel"
+            android:textStyle="bold|italic"
+            android:textAlignment="center"
+            />
+
+        <androidx.cardview.widget.CardView
+           android:id="@+id/latestNewsCardView"
+           style="@style/CardViewStyle">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/LinearLayoutCardStyle">
+                <ImageView
+                    android:id="@+id/hurryNews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hurry"
+                    android:contentDescription="@string/someone_running_in_hurry"/>
+
+                <TextView
+                    android:text="@string/in_hurry_wanna_see_latest_news"
+                    android:textAlignment="center"
+                    android:labelFor="@id/hurryNews"
+                    style="@style/CardTextViewStyle"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+    </GridLayout>

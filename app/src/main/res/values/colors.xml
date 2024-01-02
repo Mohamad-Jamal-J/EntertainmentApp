@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#739072</color>
+    <color name="mainButton">#4F6F52</color>
+    <color name="darkGreen">#3A4D39</color>
+    <color name="text">#E7DBC0</color>
+    <color name="cardText">#22504C</color>
+    <color name="opacity">#32D0CEC8</color>
+
+
+
+
+
+
+
+</resources>

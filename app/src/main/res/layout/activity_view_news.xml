@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ViewNewsActivity"
+    android:background="@drawable/linear_gradient"
+    android:padding="10dp">
+
+   <androidx.appcompat.widget.LinearLayoutCompat
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="end"
+       android:padding="5dp">
+       <TextView
+           android:text="@string/check_your_news"
+           android:layout_marginHorizontal="55dp"
+           style="@style/pageLabel"
+           android:layout_gravity="center"
+           android:textSize="20sp"
+           />
+       <ImageButton
+           android:id="@+id/editButton"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/edit_off"
+           android:background="@drawable/image_bg"
+           android:layout_gravity="end"
+           android:contentDescription="@string/edit_button"
+           android:layout_marginRight="5dp"
+           />
+
+   </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="420dp">
+
+    <ListView
+        android:id="@+id/newsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="multipleChoice"
+        android:divider="@color/black"
+        android:dividerHeight="3dp"
+        android:background="@drawable/style_listview"
+        android:textAlignment="center"
+        android:scrollbars="none"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+    <Button
+        android:id="@+id/saveNewsList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_the_news_list"
+        android:layout_marginTop="30dp"
+        style="@style/ButtonStyle"
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

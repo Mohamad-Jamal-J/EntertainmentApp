@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity"
+    android:orientation="vertical"
+    android:gravity="top|center"
+    android:background="@drawable/linear_gradient">
+
+
+    <TextView
+        android:id="@+id/activityLabel"
+        android:text="@string/sign_up_page_label"
+        android:layout_marginTop="50dp"
+        style="@style/pageLabel"
+        />
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/user"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/avatar_of_male_female"
+        android:background="@drawable/image_bg"/>
+
+
+    <EditText
+        android:id="@+id/userName"
+        android:hint="@string/first_name"
+        android:inputType="textPersonName"
+        android:autofillHints="username"
+        style="@style/EditTextStyle"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"
+        style="@style/EditTextStyle"
+        />
+    <EditText
+        android:id="@+id/password"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:autofillHints="password"
+        style="@style/EditTextStyle"/>
+
+    <Button
+        android:id="@+id/signButton"
+        android:text="@string/sign_up_btn"
+        android:layout_marginTop="20dp"
+        style="@style/ButtonStyle"
+        />
+    <Button
+        android:id="@+id/loginButton"
+        android:text="@string/login_btn"
+        style="@style/SecondaryButtonStyle"
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LatestNewsActivity"
+    android:background="@drawable/linear_gradient"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:rowCount="4"
+    android:paddingHorizontal="30dp"
+    android:paddingVertical="60dp">
+
+
+        <TextView
+            android:text="@string/or_click_to_see_latest_news_from"
+            style="@style/pageLabel"
+            android:layout_gravity="center"
+            android:layout_columnSpan="2"
+            android:textStyle="bold|italic"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bbcCardView"
+            style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/LinearLayoutCardStyle">
+                <ImageView
+                    android:id="@+id/bbcImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bbc"
+                    android:contentDescription="@string/bbc_channel_icon"/>
+                <TextView
+                    style="@style/CardTextViewStyle"
+                    android:text="@string/bbc_label"
+                    android:labelFor="@id/bbcImage"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/nyTimesCardView"
+            style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/LinearLayoutCardStyle">
+                <ImageView
+                    android:id="@+id/nyTimesImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/nytimes"
+                    android:contentDescription="@string/ny_times_logo_description"/>
+
+                <TextView
+                    style="@style/CardTextViewStyle"
+                    android:text="@string/new_york_times_label"
+                    android:labelFor="@id/nyTimesImage"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/aljazeeeraCardView"
+            style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/LinearLayoutCardStyle">
+                <ImageView
+                    android:id="@+id/aljazeeraImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/aljazeera"
+                    android:contentDescription="@string/aljazeera_channel_icon"/>
+
+                <TextView
+                    style="@style/CardTextViewStyle"
+                    android:text="@string/aljazeera_label"
+                    android:labelFor="@id/aljazeeraImage"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cnnCardView"
+            style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/LinearLayoutCardStyle">
+                <ImageView
+                    android:id="@+id/cnnImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cnn"
+                    android:contentDescription="@string/cnn_channel_icon"/>
+
+                <TextView
+                    style="@style/CardTextViewStyle"
+                    android:text="@string/cnn_label"
+                    android:labelFor="@id/cnnImage"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/russiaTodayCardView"
+            style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/LinearLayoutCardStyle">
+                <ImageView
+                    android:id="@+id/russiaTodayImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/rt"
+                    android:contentDescription="@string/russia_today_channel_icon"/>
+
+                <TextView
+                    style="@style/CardTextViewStyle"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/russiaTodayImage"
+                    android:text="@string/russia_today_label" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/foxnewsCardView"
+            style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/LinearLayoutCardStyle">
+                <ImageView
+                    android:id="@+id/foxnewsImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/fox"
+                    android:contentDescription="@string/fox_new_channel_icon"/>
+
+                <TextView
+                    style="@style/CardTextViewStyle"
+                    android:text="@string/fox_news_label"
+                    android:labelFor="@id/foxnewsImage"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+    </GridLayout>

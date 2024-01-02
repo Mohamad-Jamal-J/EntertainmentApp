@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".APIChoiceActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/linear_gradient">
+
+    <TextView
+        android:id="@+id/welcomeLabel"
+        android:layout_marginTop="20dp"
+        android:text="@string/welcome"
+        style="@style/pageLabel"
+        />
+
+    <TextView
+        android:id="@+id/pageLabel"
+        android:text="@string/what_are_you_looking_for"
+        style="@style/pageLabel"
+        android:textSize="20sp"
+        />
+    <GridLayout
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:columnCount="1"
+        android:rowCount="4">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/newsCardView"
+            style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/newsImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/news"
+                    android:contentDescription="@string/news_logo"/>
+
+                <TextView
+                    android:text="@string/news_section"
+                    android:labelFor="@id/newsImage"
+                    style="@style/CardTextViewStyle"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/entertainmentCardView"
+            style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/funImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/entertainment"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/image_of_masks"/>
+
+                <TextView
+                    android:text="@string/entertainment_section"
+                    android:labelFor="@id/funImage"
+                    style="@style/CardTextViewStyle"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/savedNewsCardView"
+           style="@style/CardViewStyle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/historyImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/history"
+                    android:contentDescription="@string/icon_of_going_back_in_time"/>
+
+                <TextView
+                    android:text="@string/view_your_saved_news"
+                    android:labelFor="@id/historyImage"
+                    style="@style/CardTextViewStyle"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:text="Log Out"
+            android:layout_rowWeight ="0.2"
+            android:layout_columnWeight= "0.2"
+            android:layout_margin = "5dp"
+            android:textColor = "@color/text"
+            android:backgroundTint = "#77CD4940"
+            android:textStyle="bold"/>
+    </GridLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

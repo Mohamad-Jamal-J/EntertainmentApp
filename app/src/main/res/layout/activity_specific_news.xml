@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top|center"
+    tools:context=".SpecificNewsActivity"
+    android:background="@drawable/linear_gradient">
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/news"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/image_bg"
+        android:contentDescription="@string/news_logo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text"
+        android:textStyle="bold"
+        android:text="@string/news_page_label"
+        />
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="50dp">
+
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_columnWeight="2"
+            android:layout_columnSpan="2"
+            android:hint="@string/search_for_news"
+            android:inputType="text"/>
+
+        <ImageButton
+            android:id="@+id/searchButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_columnWeight="1"
+            android:src="@drawable/search"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="@string/button_with_search_image" />
+
+
+        <Spinner
+            android:id="@+id/categorySpinner"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/style_dropper"
+            android:popupBackground="@drawable/spinner_choices_background"
+        />
+
+        <Spinner
+            android:id="@+id/channelSpinner"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/style_dropper"
+            android:popupBackground="@drawable/spinner_choices_background"
+            />
+    </GridLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
