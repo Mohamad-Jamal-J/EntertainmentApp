@@ -1,4 +1,4 @@
-# Entertainment App
+# Entertainment App (Android Application - Java)
 
 Welcome to the Entertainment App, where you can stay updated with world news and enjoy your time with jokes. It's the perfect application to kickstart your day!
 
