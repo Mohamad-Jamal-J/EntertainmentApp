@@ -21,17 +21,17 @@ Thank you for using the Entertainment App! Feel free to explore and enjoy the co
 
 
 
-<br />
 ![news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fnews.png)
+*Screenshot: News*
 
-<br />
 ![latest_news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Flatest_news.png)
+*Screenshot: Latest News*
 
-<br />
 ![specific.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fspecific.png)
+*Screenshot: Specific News*
 
-<br />
 ![history.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fhistory.png)
+*Screenshot: History*
 
-<br />
 ![fun.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Ffun.png)
+*Screenshot: Fun Section*
