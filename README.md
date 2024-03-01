@@ -35,26 +35,31 @@ Welcome to the Entertainment App, where you can stay updated with world news and
 
 ### News
 *Demonstrating the process of navigating through different news options within the app.*
+<br/><br/>
 ![news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fnews.png)
 ---
 
 ### Latest News
 *Demonstrating how users interact within the latest news section.*
+<br/><br/>
 ![latest_news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Flatest_news.png)
 ---
 
 ### Specific News
 *Demonstrating the process of searching for specific news articles.*
+<br/><br/>
 ![specific.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fspecific.png)
 ---
 
 ### Fun Section
 *Demonstrating the engagement within the fun section.*
+<br/><br/>
 ![fun.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Ffun.png)
 ---
 
 ### History
 *Demonstration of the history feature and how users interact with it.*
+<br/><br/>
 ![history.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fhistory.png)
 ---
 
