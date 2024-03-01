@@ -134,7 +134,7 @@ public class SignupActivity extends AbstractAppManager{
     //this method uses volley to check if the email provided was valid or not.
     // meaning that the emails have to be real and not dummy emails.
     protected void validateEmailWithApi(String name, String email, String password){
-        String API_KEY = "bcf4d62f20ea4ef6902c0203ae831022";
+        String API_KEY = "c039dcb93b574b54bfc0ce7f110bdf97";
         String url = "https://emailvalidation.abstractapi.com/v1/?api_key="+API_KEY+"&email="+email;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,url, null,
                 response -> {
@@ -156,7 +156,7 @@ public class SignupActivity extends AbstractAppManager{
                         Log.d("TAG888", e.toString());
                     }
                 }
-                , error ->Log.d("TAG888", "Volley Error: " + error.toString()));
+                , error ->Log.d("TAG888", "Volley Error: " + error.toString()+error.getCause()));
         queue.add(request);
     }
 

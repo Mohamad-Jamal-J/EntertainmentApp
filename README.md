@@ -15,3 +15,14 @@ it's the right application to start your day with.
  * centeralized strings, colors, and styles where needed.
  * i locked the activites on portrait orientation so there was no need to implement any of the call back methods related to it.
  * annotated screenshots on my drive were provided with the submission memo on ritaj.
+
+
+![news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fnews.png)
+
+![latest_news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Flatest_news.png)
+
+![specific.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fspecific.png)
+
+![history.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fhistory.png)
+
+![fun.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Ffun.png)
