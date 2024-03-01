@@ -20,18 +20,28 @@ This app utilizes three different APIs to provide the following functionalities.
 Thank you for using the Entertainment App! Feel free to explore and enjoy the content.
 
 
+## Annotated Screenshots
 
+### News
+*Screenshot of the News section*
 ![news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fnews.png)
-*Screenshot: News*
+---
 
+### Latest News
+*Screenshot of the Latest News section*
 ![latest_news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Flatest_news.png)
-*Screenshot: Latest News*
+---
 
+### Specific News
+*Screenshot of the Specific News section*
 ![specific.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fspecific.png)
-*Screenshot: Specific News*
+---
 
+### History
+*Screenshot of the History section*
 ![history.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fhistory.png)
-*Screenshot: History*
+---
 
+### Fun Section
+*Screenshot of the Fun Section*
 ![fun.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Ffun.png)
-*Screenshot: Fun Section*
