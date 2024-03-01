@@ -22,6 +22,7 @@ Welcome to the Entertainment App, where you can stay updated with world news and
   - *News fetching via [newsdata.io](https://newsdata.io)*
 - **Activity Lifecycle Management**: Ensure smooth transitions and efficient resource management throughout the app's lifecycle.
 - **Local Storage and Shared Preferences**: Store user login credentials, preferred news, and other essential data locally on the device for quick access and personalized experience.
+- **Data Exchange**: Utilize Gson library for exchanging data in JSON format over APIs and intents.
 - **Input Validation and Error Handling**: Ensure that user inputs are validated to maintain data integrity and enhance application security. Implement robust error-handling mechanisms to provide a smooth user experience.
 - **UI/UX Optimization**: 
   - Strive to offer the best user experience possible within the scope of the course.
