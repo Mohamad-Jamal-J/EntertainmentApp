@@ -1,28 +1,37 @@
-Entertainment App
-where you can read the world news and also enjoy your time with jokes. 
-it's the right application to start your day with.
+# Entertainment App
 
- i used 3 different webservices, to validate real emails, to fetch jokes, and to fetch news.
+Welcome to the Entertainment App, where you can stay updated with world news and enjoy your time with jokes. It's the perfect application to kickstart your day!
+
+This app utilizes three different APIs to provide the following functionalities.
+- Real email validation via [abstractapi.com](https://www.abstractapi.com/)
+- Joke fetching via [icanhazdadjoke](https://www.icanhazdadjoke.com/)
+- News fetching via [newsdata.io](https://newsdata.io)
+
+### Key Features:
+
+- **Well-documented Code**: Each method is thoroughly documented for clarity and understanding.
+- **User Lifecycle Management**: Ensured a smooth user experience by handling possible errors effectively.
+- **Variety of Layout Managers**: Utilized constraint layout, grid layout, linear layouts, and nested linear layouts for enhanced UI design.
+- **Diverse Views**: Incorporated editTexts, textViews, buttons, spinners, listViews, imageButtons, and alert dialogs to enrich user interaction.
+- **Optimized UI/UX**: Strived to offer the best user experience possible within the scope of the course, with interactive elements such as button touch feedback and dynamic image backgrounds.
+- **User-friendly Design**: Designed layouts and activities that are easy to understand for users of all ages.
+- **Centralized Resources**: Centralized strings, colors, and styles where necessary for consistency and maintainability.
+
+Thank you for using the Entertainment App! Feel free to explore and enjoy the content.
 
 
- i have followed the instructions very varefully:
- * well documented code, every method had a comment description for it.
- * maintained a good and acceptable life cycle for users and the errors or 
- * used varitey of layout managers: constraint layout, gridlayout, linear layouts, and nested linear layouts.
- * i've also used a varitey of views, like edit texts, textviews, buttons, spinners, listviews, imagebuttons, alert dialogs.
- * i've offered the best UX possible with my current knoweldge in this course, through interactions rich with feedbacks like button touch feedback and changing the background of images.
- * maintained easy to understand layouts and activities.
- * centeralized strings, colors, and styles where needed.
- * i locked the activites on portrait orientation so there was no need to implement any of the call back methods related to it.
- * annotated screenshots on my drive were provided with the submission memo on ritaj.
 
-
+<br />
 ![news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fnews.png)
 
+<br />
 ![latest_news.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Flatest_news.png)
 
+<br />
 ![specific.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fspecific.png)
 
+<br />
 ![history.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Fhistory.png)
 
+<br />
 ![fun.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fannotated_screenshots%2Ffun.png)
